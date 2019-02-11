@@ -12,22 +12,62 @@ import java.util.Arrays;
  * @author justu
  */
 public class Memory {
-    public static void main (String[]args){
-       int []memory= new int [20];
-        System.out.println(Arrays.toString(memory));
-        load(memory,1,3);
-        load (memory,2,1);
-        load (memory,3,4);
-        load (memory,4,2);
-        System.out.println(Arrays.toString(memory));
-        remove(memory,3);
-    }
 
-    private static void load(int[] memory, int i, int i0) {
-       
+    public static void main(String[] args) {
+        int[] memory = new int[20];
     }
-
-    private static void remove(int[] memory, int i) {
+    /**
+     * 
+     * @param memory
+     * @param processId
+     * @param fromPs
+     * @return 
+     */
+    public static int search(int[]memory,int processId,int fromPs){
+        
+        return 0;
+    }
+    /**
+     * 
+     * @param memory
+     * @param startPos
+     * @return 
+     */
+    public static int size(int[]memory,int startPos){
+        return 0;
+    }
+    /**
+     * 
+     * @param memory
+     * @param wantedSpace
+     * @return 
+     */
+    public static int findAvailableSpace(int[]memory,int wantedSpace){
+        return 0;
+    }
+    /**
+     * 
+     * @param memory
+     * @param processId
+     * @param processSize
+     * @return 
+     */
+    public static boolean load(int[]memory,int processId,int processSize){
+        return false;
+    }
+    /**
+     * 
+     * @param memory
+     * @param processId 
+     */
+    public static void remove(int []memory,int processId){
+        
+    }
+    /**
+     * 
+     * @param memory 
+     */
+    public static void compact(int []memory){
         
     }
 }
