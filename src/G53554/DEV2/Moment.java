@@ -64,20 +64,30 @@ public class Moment {
      *
      * @return l'heure en intégralité
      */
-
     @Override
     public String toString() {
         return hour + ":" + minute + ":" + second;
     }
+
     /**
-     * 
+     *
      * @param other
-     * @return 
+     * @return
      */
 
     public boolean equals(Moment other) {
-
-        return false;
+        boolean equals=false;
+        if(other.hour==this.hour && other.minute== this.minute && other.second== this.second){
+            equals=true; 
+        }
+        return equals;
     }
+
+    public Moment() {
+        
+    }
+
+   
+    
 
 }
