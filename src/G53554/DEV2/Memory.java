@@ -14,10 +14,10 @@ public class Memory {
 
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
-        int[] memory = {1, 1, 0, 0, 5,5,5,0,0,0,0,0,0,0,0,0};
+        int[] memory = {1, 1, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         //System.out.println(size(memory,0));
         //System.out.println(search(memory,1,4));
-        System.out.println(findAvailableSpace(memory, 6));
+        System.out.println(findAvailableSpace(memory, 2));
     }
 
     /**
@@ -51,7 +51,7 @@ public class Memory {
     public static int size(int[] memory, int startPos) {
         int taillePos = 0;
         for (int i = startPos; i < memory.length; i++) {
-            while(memory[startPos] == memory[i]) {
+            while (memory[startPos] == memory[i]) {
                 taillePos++;
                 i++;
 
@@ -69,15 +69,17 @@ public class Memory {
      */
     public static int findAvailableSpace(int[] memory, int wantedSpace) {
         int Pos = -1;
-        for (int i = 0; i < memory.length-wantedSpace; i++) {
-           int recherche= search(memory,0,0);
-            if(size(memory,recherche)>=wantedSpace){
-            Pos=i;
+        boolean finded = false;
+        int recherche = search(memory, 0, 0);
+        while( recherche < memory.length - wantedSpace && !finded) {
+            recherche = search(memory, 0, recherche);
+            if (size(memory, recherche) >= wantedSpace) {
+                finded = true;
+                Pos = recherche;
+            }
+
         }
-           
-           
-        }
-         return Pos;
+        return Pos;
     }
 
     /**
