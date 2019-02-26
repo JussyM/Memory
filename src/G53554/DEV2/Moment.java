@@ -70,9 +70,9 @@ public class Moment {
     }
 
     /**
-     *
+     *Cette méthode vérifie si le moment initial est égale au moment initialiser en paramètre
      * @param other
-     * @return
+     * @return un boolean true si c'est vrai false si c'est pas le cas 
      */
 
     public boolean equals(Moment other) {
@@ -85,7 +85,7 @@ public class Moment {
 
     public Moment() {
         
-    }
+    }   
 
    
     
