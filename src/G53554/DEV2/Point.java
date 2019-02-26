@@ -11,11 +11,13 @@ package G53554.DEV2;
  */
 public class Point {
   private double x;
-  private double y; 
+  private double y;
   /**
+   * 
    * Elle affiche la classe Point 
    */
   public void display(){
+      
       
   }
   /**
@@ -63,4 +65,5 @@ public class Point {
      return "("+ x + "," + y + ")";
       
   }
+  
 }

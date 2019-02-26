@@ -14,6 +14,11 @@ public class Video {
     private boolean publier;
     private String titre;
     private int nbLikes;
+
+    public String getAuteur() {
+        return auteur;
+    }
+    
     
     public void liker(){
         nbLikes++;

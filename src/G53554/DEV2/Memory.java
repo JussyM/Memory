@@ -14,13 +14,16 @@ public class Memory {
 
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
-        int[] memory = {1, 1, 0, 0, 5};
-        System.out.println(size(memory, 4));
+        int[] memory = {1, 1, 0, 0, 5,5,5,0,0,0,0,0,0,0,0,0};
+        //System.out.println(size(memory,0));
+        //System.out.println(search(memory,1,4));
+        System.out.println(findAvailableSpace(memory, 6));
     }
 
     /**
-     * This method search value for the processId in the board and return the postion 
-     * of the value in the board
+     * This method search value for the processId in the board and return the
+     * postion of the value in the board
+     *
      * @param memory
      * @param processId
      * @param fromPos
@@ -31,13 +34,16 @@ public class Memory {
         for (int i = fromPos; i < memory.length; i++) {
             if (memory[i] == processId) {
                 posValeur = i;
+            } else if (memory[i] != processId) {
+                posValeur = -1;
             }
         }
         return posValeur;
     }
 
     /**
-     *This method return the size of any value that repeat it self 
+     * This method return the size of any value that repeat it self
+     *
      * @param memory
      * @param startPos
      * @return the size of the value
@@ -47,10 +53,10 @@ public class Memory {
         for (int i = startPos; i < memory.length; i++) {
             while(memory[startPos] == memory[i]) {
                 taillePos++;
-               i++;
-                
+                i++;
+
             }
-           
+
         }
         return taillePos;
     }
@@ -62,8 +68,16 @@ public class Memory {
      * @return
      */
     public static int findAvailableSpace(int[] memory, int wantedSpace) {
-        
-        return 0;
+        int Pos = -1;
+        for (int i = 0; i < memory.length-wantedSpace; i++) {
+           int recherche= search(memory,0,0);
+            if(size(memory,recherche)>=wantedSpace){
+            Pos=i;
+        }
+           
+           
+        }
+         return Pos;
     }
 
     /**
