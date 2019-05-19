@@ -90,13 +90,23 @@ public class Memory {
     }
 
     /**
+     * Method that init and generate the game return the number of tour
      *
      * @param n
-     * @return
+     * @return nbtour
      */
     public static int playMemory(int n) {
-        int nbtour = 0;
+        int nbtour = 1;
+
         while (!isGameOver(collectCard(n))) {
+            System.out.println("**** tour " + nbtour);
+            int[] cardArrays = initCard(n);
+            hideCards(cardArrays, collectCard(n));
+            int posCard = askPosition(cardArrays, collectCard(n));
+            displayCardSelect(posCard, cardArrays);
+            int posCard2 = askPosition(cardArrays, collectCard(n));
+            displayCardSelect(posCard2, cardArrays);
+            conform(cardArrays, collectCard(n), posCard, posCard2);
             nbtour++;
         }
 
@@ -109,9 +119,10 @@ public class Memory {
     }
 
     /**
+     * init an arrays of boolean
      *
      * @param n
-     * @return
+     * @return tab
      */
     public static boolean[] collectCard(int n) {
         boolean[] tab = new boolean[2 * n];
@@ -120,6 +131,7 @@ public class Memory {
     }
 
     /**
+     * Prind a message if the card are the same or not
      *
      * @param cards
      * @param collectedCards
@@ -150,9 +162,10 @@ public class Memory {
     }
 
     /**
+     * ask Value to the player
      *
      * @param message
-     * @return
+     * @return value ask
      */
     public static int askPosition(String message) {
         System.out.println(message);
@@ -161,10 +174,10 @@ public class Memory {
     }
 
     /**
+     * Print the message
      *
-     * @return
+     * @return message
      */
-
     private static String[] message() {
         String message1 = "Avec combien de paire voulez-vous jouer ? (3 à 20): ";
         String[] message = {message1};
@@ -172,19 +185,12 @@ public class Memory {
     }
 
     /**
-     *
+     * Finally display the game
      */
     public static void displayGame() {
         System.out.println("***MEMORY***");
         int paire = askPosition(message()[0]);
-        int[] cardArrays = initCard(paire);
-        hideCards(cardArrays, collectCard(paire));
-        int posCard = askPosition(cardArrays, collectCard(paire));
-        displayCardSelect(posCard, cardArrays);
-        int posCard2 = askPosition(cardArrays, collectCard(paire));
-        displayCardSelect(posCard2, cardArrays);
-        conform(cardArrays, collectCard(paire), posCard, posCard2);
-
+        playMemory(paire);
     }
 
     /**
