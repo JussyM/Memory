@@ -41,7 +41,10 @@ public class Memory {
      * @return pos
      */
     public static int askPosition(int[] cards, boolean[] collectedCards) {
-        String message = "Veuillez entrez une position" + "(" + "0" + " à " + cards.length + ") " + ":";
+        String message = "Veuillez entrez une position"
+                + "(" + "0"
+                + " à "
+                + cards.length + ") " + ":";
         int pos = askPosition(message);
         while (pos > cards.length || pos < 0 || collectedCards[pos]) {
             System.out.println("La position donné ne réfère à rien");
@@ -80,13 +83,12 @@ public class Memory {
      * @return boolean
      */
     public static boolean isGameOver(boolean[] collectedCards) {
-        for (int i = 0; i < collectedCards.length; i++) {
-            if (collectedCards[i] == true) {
-                return true;
-            }
+        int i = 0;
+        while (i < collectedCards.length && collectedCards[i]) {
+            i++;
 
         }
-        return false;
+        return i == collectedCards.length;
     }
 
     /**
@@ -97,16 +99,19 @@ public class Memory {
      */
     public static int playMemory(int n) {
         int nbtour = 1;
-
-        while (!isGameOver(collectCard(n))) {
+        int[] cardArrays = initCard(n);
+        boolean[] booCard = collectCard(n);
+        int posCard;
+        int posCard2;
+        while (!isGameOver(booCard)) {
             System.out.println("**** tour " + nbtour);
-            int[] cardArrays = initCard(n);
-            hideCards(cardArrays, collectCard(n));
-            int posCard = askPosition(cardArrays, collectCard(n));
+            hideCards(cardArrays, booCard);
+            posCard = askPosition(cardArrays, booCard);
             displayCardSelect(posCard, cardArrays);
-            int posCard2 = askPosition(cardArrays, collectCard(n));
+            posCard2 = askPosition(cardArrays, booCard);
             displayCardSelect(posCard2, cardArrays);
-            conform(cardArrays, collectCard(n), posCard, posCard2);
+            conform(cardArrays, booCard, posCard, posCard2);
+
             nbtour++;
         }
 
@@ -190,7 +195,8 @@ public class Memory {
     public static void displayGame() {
         System.out.println("***MEMORY***");
         int paire = askPosition(message()[0]);
-        playMemory(paire);
+        int nbtour = playMemory(paire);
+        System.out.println("Le nombre de tour; " + nbtour);
     }
 
     /**
