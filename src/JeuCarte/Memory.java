@@ -98,6 +98,7 @@ public class Memory {
      * @return nbtour
      */
     public static int playMemory(int n) {
+        String gameStop = "quit";
         int nbtour = 1;
         int[] cardArrays = initCard(n);
         boolean[] booCard = collectCard(n);
@@ -143,7 +144,8 @@ public class Memory {
      * @param pos1
      * @param pos2
      */
-    private static void conform(int[] cards, boolean[] collectedCards, int pos1, int pos2) {
+    private static void conform(int[] cards, boolean[] collectedCards, int pos1,
+             int pos2) {
         boolean collect = checkAndCollect(cards, collectedCards, pos1, pos2);
         if (collect) {
             System.out.println("Elles correspondent !");
